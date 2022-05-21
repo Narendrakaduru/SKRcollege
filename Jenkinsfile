@@ -1,19 +1,11 @@
 pipeline {
   agent any
-  environment {
-	DOCKERHUB_CREDENTIALS=credentials('DockerAuth')
-    TESTER = 'Nani'
-    BUILD_ID = '1.0.0'
-  }
-  tools {
-    maven 'M2_HOME'
-  }
   stages {
     stage('Checkout SCM') {
       parallel {
         stage('Checkout SCM') {
           steps {
-            git(url: 'https://github.com/Narendrakaduru/SKRcollege.git', credentialsId: 'GitAuth')
+            git(url: 'https://github.com/Narendrakaduru/SKRcollege.git', credentialsId: 'GitAuth', branch: 'main')
           }
         }
 
@@ -77,5 +69,13 @@ pipeline {
       }
     }
 
+  }
+  tools {
+    maven 'M2_HOME'
+  }
+  environment {
+    DOCKERHUB_CREDENTIALS = credentials('DockerAuth')
+    TESTER = 'Nani'
+    BUILD_ID = '1.0.0'
   }
 }
