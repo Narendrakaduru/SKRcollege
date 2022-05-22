@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'linux'
+    }
+
+  }
   stages {
     stage('Checkout SCM') {
       parallel {
