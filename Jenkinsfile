@@ -63,7 +63,7 @@ pipeline {
 
     stage('Push to DockerHub') {
       steps {
-        sh 'docker tag sai-java-img:latest narendra8686/skr-college-img:latest'
+        sh 'docker tag skr-college-img:latest narendra8686/skr-college-img:latest'
         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         sh 'docker push narendra8686/skr-college-img:latest'
       }
