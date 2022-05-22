@@ -55,12 +55,6 @@ pipeline {
       }
     }
 
-    stage('Run Docker container on Jenkins Agent') {
-      steps {
-        sh 'docker run --name tomcat -d -p 8888:8080 skr-college-img:latest'
-      }
-    }
-
     stage('Push to DockerHub') {
       steps {
         sh 'docker tag skr-college-img:latest narendra8686/skr-college-img:latest'
