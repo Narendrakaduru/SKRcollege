@@ -18,7 +18,7 @@ pipeline {
       }
     }
 
-    stage('Build') {
+    stage('Build-steps') {
       parallel {
         stage('Build') {
           steps {
@@ -43,6 +43,12 @@ pipeline {
       }
     }
 
+    stage('Upload to Artifactory') {
+      steps {
+        sh 'jfrog rt upload --url http://localhost:8082/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/1.1-SNAPSHOT.war java-web-app/'
+      }
+    }
+
     stage('SonarQube analysis') {
         //def scannerHome = tool 'SonarQubeScanner-4.7.0';
         steps{
@@ -54,11 +60,6 @@ pipeline {
       }
     }
 
-    stage('Test') {
-      steps {
-        sh 'mvn test'
-      }
-    }
 
     stage('Docker Build') {
       steps {
@@ -80,6 +81,8 @@ pipeline {
   }
   environment {
     DOCKERHUB_CREDENTIALS = credentials('DockerAuth')
+    CI = true
+    ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
     TESTER = 'Nani'
     BUILD_ID = '1.0.0'
   }
