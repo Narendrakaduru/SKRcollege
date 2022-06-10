@@ -51,7 +51,7 @@ pipeline {
         }
       }
       steps {
-        sh 'jfrog rt upload --url http://localhost:8082/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/1.1-SNAPSHOT.war skr-repo/'
+        sh 'jfrog rt upload --url http://localhost:8082/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/SKRcollege.war skr-repo/'
       }
     }
 
