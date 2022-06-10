@@ -44,8 +44,14 @@ pipeline {
     }
 
     stage('Upload to Artifactory') {
+      agent {
+        docker {
+          image 'releases-docker.jfrog.io/jfrog/jfrog-cli-v2:2.2.0' 
+          reuseNode true
+        }
+      }
       steps {
-        sh 'jfrog rt upload --url http://localhost:8081/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/1.1-SNAPSHOT.war skr-repo/'
+        sh 'jfrog rt upload --url http://localhost:8082/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/1.1-SNAPSHOT.war skr-repo/'
       }
     }
 
@@ -78,6 +84,9 @@ pipeline {
   }
   tools {
     maven 'M2_HOME'
+  }
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '5'))
   }
   environment {
     DOCKERHUB_CREDENTIALS = credentials('DockerAuth')
