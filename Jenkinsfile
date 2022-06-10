@@ -79,9 +79,6 @@ pipeline {
   tools {
     maven 'M2_HOME'
   }
-  options {
-    buildDiscarder(logRotator(numToKeepStr: '5'))
-  }
   environment {
     DOCKERHUB_CREDENTIALS = credentials('DockerAuth')
     CI = true
