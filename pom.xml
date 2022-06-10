@@ -27,6 +27,19 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  <distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>nani-VB-releases</name>
+        <url>http://localhost:8081/artifactory/maven</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>nani-VB-snapshots</name>
+        <url>http://localhost:8081/artifactory/maven</url>
+    </snapshotRepository>
+</distributionManagement>
 
   <build>
     <finalName>SKRcollege</finalName>
