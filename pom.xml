@@ -32,12 +32,12 @@
     <repository>
         <id>central</id>
         <name>nani-VB-releases</name>
-        <url>http://localhost:8081/artifactory/maven</url>
+        <url>http://localhost:8081/artifactory/SKRcollege</url>
     </repository>
     <snapshotRepository>
         <id>snapshots</id>
         <name>nani-VB-snapshots</name>
-        <url>http://localhost:8081/artifactory/maven</url>
+        <url>http://localhost:8081/artifactory/SKRcollege</url>
     </snapshotRepository>
 </distributionManagement>
 
