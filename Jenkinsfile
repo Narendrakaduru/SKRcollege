@@ -45,7 +45,7 @@ pipeline {
 
     stage('Upload to Artifactory') {
       steps {
-        sh 'jf rt u --url http://localhost:8081/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/SKRcollege.war skr-repo/'
+        sh 'jf rt u --url http://localhost:8081/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/SKRcollege.war SKRcollege//'
       }
     }
 
