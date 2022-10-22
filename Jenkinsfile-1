@@ -38,7 +38,7 @@ pipeline {
 		}
 		stage('Maven Build') {
 			steps{
-					mvn clean install
+				mvn clean install
 			}
 		}
 
