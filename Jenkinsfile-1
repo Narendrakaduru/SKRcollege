@@ -27,8 +27,28 @@ pipeline {
 				])
 			}
 		}
+		stage('Maven Build') {
+			steps{
+				sh '''
+					cd ${WORKSPACE}
+					mvn clean install
+				'''
+			}
+		}
+		stage('SonarQube Scan') {	
+			steps{
+				script {
+					def scannerHome = tool 'SonarQubeScanner-4.7.0';
+					withSonarQubeEnv('sonarqube-8.9.8') { 
+						-Dsonar.projectKey=SKR_College \
+						-Dsonar.host.url=http://localhost:9000 \
+						-Dsonar.login=1e6cbcd840377b5a4eb6a763f43535579171199c
+					}
+				
+			    }
+		    }
+		}
 
-
-
+		
     }
 }
