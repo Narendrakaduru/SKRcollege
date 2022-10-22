@@ -38,10 +38,7 @@ pipeline {
 		}
 		stage('Maven Build') {
 			steps{
-				sh '''
-					cd ${WORKSPACE}
 					mvn clean install
-				'''
 			}
 		}
 
