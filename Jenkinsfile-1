@@ -5,13 +5,36 @@ pipeline {
     }
   }
   stages{
+  
     stage("Initialize") {
       steps{
-				sh '''
-				echo "JAVA_HOME = $(JAVA_HOME)"
-				echo "M2_HOME = $(M2_HOME)"
-				'''
-			}
+			sh '''
+			echo "JAVA_HOME = $(JAVA_HOME)"
+			echo "M2_HOME = $(M2_HOME)"
+			'''
+		}
     }
+	stage('Checkout code from SCM') {
+			steps{
+				cleanWs()
+				
+				checkout([$class: 'GitSCM',
+					branches: [
+						[name: "${BRANCH}"]
+					],
+					doGenerateSubmoduleConfigurations: false,
+					extensions: [],
+					gitTool: 'Default',
+					submoduleCfg: [],
+					userRemoteConfigs: [
+						[credentialsId: 'GitAuth',
+							url: 'https://github.com/Narendrakaduru/SKRcollege.git'
+						
+						]
+					]
+				])
+			}
+		}
+	
   }
 }
