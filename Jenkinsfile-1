@@ -31,7 +31,6 @@ pipeline {
 			steps{
 				sh '''
 					cd ${WORKSPACE}
-					source ~/.bashrc
 					mvn clean install
 				'''
 			}
