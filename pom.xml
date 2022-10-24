@@ -31,22 +31,10 @@
   <distributionManagement>
     <snapshotRepository>
         <id>snapshots</id>
-        <name>ubuntu-VB-snapshots</name>
-        <url>http://192.168.0.15:8081/artifactory/libs-snapshot</url>
-    </snapshotRepository>
-</distributionManagement>
-<distributionManagement>
-    <repository>
-        <id>central</id>
-        <name>ubuntu-VB-releases</name>
-        <url>http://192.168.0.15:8081/artifactory/libs-release-local</url>
-    </repository>
-</distributionManagement>
-<distributionManagement>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>ubuntu-VB-snapshots</name>
-        <url>http://192.168.0.15:8081/artifactory/libs-snapshot-local</url>
+		<name>nani-VB-releases</name>
+        <url>http://localhost:8081/artifactory/SKRcollege</url>
+		<name>nani-VB-snapshots</name>
+        <url>http://localhost:8081/artifactory/SKRcollege</url>
     </snapshotRepository>
 </distributionManagement>
 
